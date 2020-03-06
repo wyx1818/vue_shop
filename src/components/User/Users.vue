@@ -44,7 +44,7 @@
             </el-tooltip>
             <!-- 删除按钮 -->
             <el-tooltip class="item" effect="dark" content="删除用户" placement="top" :enterable="false"  :open-delay="500">
-              <el-button  @click="removeUserById(scope.row.id)" type="danger" icon="el-icon-delete" size="mini"></el-button>
+              <el-button @click="removeUserById(scope.row.id)" type="danger" icon="el-icon-delete" size="mini"></el-button>
             </el-tooltip>
             <!-- 分配角色按钮 -->
             <el-tooltip class="item" effect="dark" content="分配权限" placement="top" :enterable="false"  :open-delay="500">
