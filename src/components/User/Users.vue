@@ -12,8 +12,13 @@
       <!-- 工具栏，搜索与添加区域 -->
       <el-row :gutter="20">
         <el-col :span="7">
-          <el-input placeholder="请输入内容" v-model="queryInfo.query" class="input-with-select"
-          clearable @clear="getUserList">
+          <el-input
+            placeholder="请输入内容"
+            v-model="queryInfo.query"
+            class="input-with-select"
+            clearable
+            @clear="getUserList"
+          >
             <el-button @click="getUserList" slot="append" icon="el-icon-search"></el-button>
           </el-input>
         </el-col>
@@ -31,24 +36,63 @@
         <el-table-column label="角色" prop="role_name"></el-table-column>
         <el-table-column label="状态" width="70px">
           <template slot-scope="scope">
-            <el-switch v-model="scope.row.mg_state" @change="userStateChange(scope.row)"
-            active-color="#13ce66" inactive-color="#ff4949">
-            </el-switch>
+            <el-switch
+              v-model="scope.row.mg_state"
+              @change="userStateChange(scope.row)"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+            ></el-switch>
           </template>
         </el-table-column>
         <el-table-column label="操作" width="180px">
           <template slot-scope="scope">
             <!-- 修改按钮 -->
-            <el-tooltip class="item" effect="dark" content="修改信息" placement="top" :enterable="false" :open-delay="500">
-              <el-button @click="editDialog(scope.row.id)" type="primary" icon="el-icon-edit" size="mini"></el-button>
+            <el-tooltip
+              class="item"
+              effect="dark"
+              content="修改信息"
+              placement="top"
+              :enterable="false"
+              :open-delay="500"
+            >
+              <el-button
+                @click="editDialog(scope.row.id)"
+                type="primary"
+                icon="el-icon-edit"
+                size="mini"
+              ></el-button>
             </el-tooltip>
             <!-- 删除按钮 -->
-            <el-tooltip class="item" effect="dark" content="删除用户" placement="top" :enterable="false"  :open-delay="500">
-              <el-button @click="removeUserById(scope.row.id)" type="danger" icon="el-icon-delete" size="mini"></el-button>
+            <el-tooltip
+              class="item"
+              effect="dark"
+              content="删除用户"
+              placement="top"
+              :enterable="false"
+              :open-delay="500"
+            >
+              <el-button
+                @click="removeUserById(scope.row.id)"
+                type="danger"
+                icon="el-icon-delete"
+                size="mini"
+              ></el-button>
             </el-tooltip>
             <!-- 分配角色按钮 -->
-            <el-tooltip class="item" effect="dark" content="分配权限" placement="top" :enterable="false"  :open-delay="500">
-              <el-button type="warning" icon="el-icon-setting" size="mini" @click="setRole(scope.row)"></el-button>
+            <el-tooltip
+              class="item"
+              effect="dark"
+              content="分配权限"
+              placement="top"
+              :enterable="false"
+              :open-delay="500"
+            >
+              <el-button
+                type="warning"
+                icon="el-icon-setting"
+                size="mini"
+                @click="setRole(scope.row)"
+              ></el-button>
             </el-tooltip>
           </template>
         </el-table-column>
@@ -56,24 +100,26 @@
 
       <!-- 分页区域 -->
       <el-pagination
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      :current-page="queryInfo.pagenum"
-      :page-sizes="[1, 2, 5, 10]"
-      :page-size="queryInfo.pagesize"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="total">
-      </el-pagination>
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="queryInfo.pagenum"
+        :page-sizes="[1, 2, 5, 10]"
+        :page-size="queryInfo.pagesize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+      ></el-pagination>
     </el-card>
 
     <!-- 添加对话框 -->
-    <el-dialog
-      title="添加用户"
-      :visible.sync="addDialogVisivle"
-      @close="addDialogClose"
-      width="50%">
+    <el-dialog title="添加用户" :visible.sync="addDialogVisivle" @close="addDialogClose" width="50%">
       <!-- 内容主体区 -->
-      <el-form :model="addForm" :rules="addFormRules" ref="addFormRef" label-width="100px" class="demo-ruleForm">
+      <el-form
+        :model="addForm"
+        :rules="addFormRules"
+        ref="addFormRef"
+        label-width="100px"
+        class="demo-ruleForm"
+      >
         <el-form-item label="用户名" prop="username">
           <el-input v-model="addForm.username"></el-input>
         </el-form-item>
@@ -95,21 +141,17 @@
     </el-dialog>
 
     <!-- 编辑对话框 -->
-    <el-dialog
-      title="编辑用户"
-      :visible.sync="editDialogVisble"
-      @close="editDialogClose"
-      width="50%">
+    <el-dialog title="编辑用户" :visible.sync="editDialogVisble" @close="editDialogClose" width="50%">
       <!-- 内容主体区 -->
       <el-form :model="editForm" :rules="editFormRules" ref="editFormRef" label-width="100px">
         <el-form-item label="用户名">
           <el-input v-model="editForm.username" disabled></el-input>
         </el-form-item>
         <el-form-item label="邮箱" prop="email">
-          <el-input v-model="editForm.email" ></el-input>
+          <el-input v-model="editForm.email"></el-input>
         </el-form-item>
         <el-form-item label="手机号" prop="mobile">
-          <el-input v-model="editForm.mobile" ></el-input>
+          <el-input v-model="editForm.mobile"></el-input>
         </el-form-item>
       </el-form>
       <!-- 底部区域 -->
@@ -124,18 +166,20 @@
       title="分配角色"
       :visible.sync="setRoleDialogVisible"
       @close="setRoleDialogClose"
-      width="50%">
+      width="50%"
+    >
       <div>
         <p>当前用户：{{ userInfo.username }}</p>
         <p>当前角色：{{ userInfo.role_name }}</p>
-        <p>分配新角色：
+        <p>
+          分配新角色：
           <el-select v-model="selectedRoleId" placeholder="请选择">
             <el-option
               v-for="item in rolesList"
               :key="item.id"
               :label="item.roleName"
-              :value="item.id">
-            </el-option>
+              :value="item.id"
+            ></el-option>
           </el-select>
         </p>
       </div>
