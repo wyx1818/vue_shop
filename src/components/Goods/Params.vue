@@ -268,7 +268,7 @@ export default {
     // 监听级联选择框变化
     async handleChange () {
       if (this.selectedCateKeys.length !== 3) {
-        this.selectedCateKeys = []
+        // 清楚冗余数据
         this.selectedCateKeys = []
         this.manyTableData = []
         this.onlyTableData = []
@@ -321,6 +321,7 @@ export default {
       // 预校验
       this.$refs.addFormRef.validate(async valid => {
         // 发起添加请求
+        if (!valid) return null
         const { data: res } = await this.$http.post(`categories/${this.cateId}/attributes`, {
           attr_name: this.addForm.attr_name,
           attr_sel: this.activeName
@@ -439,10 +440,7 @@ export default {
   computed: {
     // 如果按钮需要被禁用，则返回true，否则返回false
     idBtnDisable () {
-      if (this.selectedCateKeys.length !== 3) {
-        return true
-      }
-      return false
+      return this.selectedCateKeys.length !== 3
     },
     // 当前选择的三级分类ID
     cateId () {

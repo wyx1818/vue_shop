@@ -47,7 +47,6 @@ export default {
       }
       // 请求成功，存储数据信息
       this.rightsList = res.data
-      console.log(this.rightsList)
     }
   }
 }

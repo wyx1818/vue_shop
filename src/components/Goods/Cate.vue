@@ -210,7 +210,6 @@ export default {
     },
     // 监听选择项变化
     parentCateChange () {
-      console.log(this.selectedKeys)
       // 如果selectedKeys数组中的length大于0，证明选中的父级分类
       if (this.selectedKeys.length > 0) {
         // 父级分类的ID
@@ -236,7 +235,6 @@ export default {
     addCate () {
       // 预验证
       this.$refs.addCateFormRef.validate(async (valid) => {
-        console.log(valid)
         if (!valid) return null
 
         const { data: res } = await this.$http.post('categories', this.addCateForm)
@@ -247,7 +245,6 @@ export default {
         this.getCateList()
         this.addCateDialogVisible = false
       })
-      console.log(this.addCateForm)
     },
 
     // * 分页处理
