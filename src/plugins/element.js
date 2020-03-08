@@ -37,7 +37,9 @@ import {
   Step,
   CheckboxGroup,
   Checkbox,
-  Upload
+  Upload,
+  Timeline,
+  TimelineItem
 } from 'element-ui'
 
 Vue.use(Row)
@@ -76,6 +78,8 @@ Vue.use(Step)
 Vue.use(CheckboxGroup)
 Vue.use(Checkbox)
 Vue.use(Upload)
+Vue.use(TimelineItem)
+Vue.use(Timeline)
 
 Vue.prototype.$message = Message // 挂载到原型上
 Vue.prototype.$confirm = MessageBox.confirm // 挂载到原型上
