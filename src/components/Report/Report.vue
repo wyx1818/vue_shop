@@ -68,7 +68,13 @@ export default {
 
     if (res.meta.status !== 200) return this.$message.error('获取折线图数据失败：' + res.meta.msg)
 
+    console.log('获取到的数据', res.data)
+
+    // 为啥要合并？？？有点晕
+
     const result = _.merge(res.data, this.options)
+
+    console.log('合并后的数据', result)
 
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(result)

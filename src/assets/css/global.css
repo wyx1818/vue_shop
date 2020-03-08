@@ -33,11 +33,6 @@ body,
   font-size: 13px;
 }
 
-/* 控制级联选择器高度 */
-.el-cascader-menu {
-  height: 300px;
-}
-
 .el-checkbox {
   margin: 0 5px 0 0;
 }

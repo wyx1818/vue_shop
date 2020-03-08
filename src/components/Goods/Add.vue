@@ -232,7 +232,6 @@ export default {
 
         if (res.meta.status !== 200) return this.$message.error('请求动态参数失败：' + res.meta.msg)
 
-        console.log(res.data)
         this.onlyTableData = res.data
       }
     },
@@ -246,7 +245,6 @@ export default {
     },
     // 处理图片预览事件
     handlePreview (file) {
-      console.log(file)
       this.previewPath = file.response.data.url
       this.previewVisible = true
     },
@@ -258,10 +256,8 @@ export default {
       const i = this.addForm.pics.findIndex(x => x.pic === filePath)
       // 3.调用数组的splice方法，把图片信息对象从pics移除
       this.addForm.pics.splice(i, 1)
-      console.log(this.addForm)
     },
     addGood () {
-      console.log(this.addForm)
       this.$refs.addFormRef.validate(async (valid) => {
         if (!valid) return this.$message.error('请填写必要的表单项！')
 
@@ -287,7 +283,6 @@ export default {
         const form = _.cloneDeep(this.addForm)
         form.goods_cat = form.goods_cat.join(',')
 
-        console.log(form)
         // 发起请求添加商品
         // 商品的名称，必须是唯一的
         const { data: res } = await this.$http.post('goods', form)

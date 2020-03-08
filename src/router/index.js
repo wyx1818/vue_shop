@@ -1,17 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../components/Login.vue'
-import Home from '../components/Home.vue'
-import Welcome from '../components/Welcome.vue'
-import Users from '../components/User/Users.vue'
-import Rights from '../components/Power/Rights.vue'
-import Roles from '../components/Power/Roles.vue'
-import Cate from '../components/Goods/Cate'
-import Params from '../components/Goods/Params'
-import GoodList from '../components/Goods/List'
-import Add from '../components/Goods/Add'
-import Order from '../components/Order/Order'
-import Report from '../components/Report/Report'
+
+const Login = () => import(/* webpackChunkName: "group-login_home_welcome" */ '../components/Login.vue')
+const Home = () => import(/* webpackChunkName: "group-login_home_welcome" */ '../components/Home.vue')
+const Welcome = () => import(/* webpackChunkName: "group-login_home_welcome" */ '../components/Welcome.vue')
+
+const Users = () => import(/* webpackChunkName: "group-user_rights_roles" */ '../components/User/Users.vue')
+const Rights = () => import(/* webpackChunkName: "group-user_rights_roles" */ '../components/Power/Rights.vue')
+const Roles = () => import(/* webpackChunkName: "group-user_rights_roles" */ '../components/Power/Roles.vue')
+
+const Cate = () => import(/* webpackChunkName: "group-cate_params" */ '../components/Goods/Cate')
+const Params = () => import(/* webpackChunkName: "group-cate_params" */ '../components/Goods/Params')
+
+const GoodList = () => import(/* webpackChunkName: "group-GoodList_Add" */ '../components/Goods/List')
+const Add = () => import(/* webpackChunkName: "group-GoodList_Add" */ '../components/Goods/Add')
+
+const Order = () => import(/* webpackChunkName: "group-Order_Report" */ '../components/Order/Order')
+const Report = () => import(/* webpackChunkName: "group-Order_Report" */ '../components/Report/Report')
 
 Vue.use(VueRouter)
 
