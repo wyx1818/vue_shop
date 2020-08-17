@@ -19,6 +19,8 @@
     "vue-table-with-tree-grid": "^0.2.4"
   },
   "devDependencies": {
+    "@babel/compat-data": "^7.10.5",
+    "@babel/plugin-proposal-numeric-separator": "^7.10.4",
     "@vue/cli-plugin-babel": "~4.2.0",
     "@vue/cli-plugin-eslint": "~4.2.0",
     "@vue/cli-plugin-router": "~4.2.0",

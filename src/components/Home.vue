@@ -2,8 +2,8 @@
   <el-container class="home_container">
     <!-- 头部区域 -->
     <el-header>
-      <div>
-        <img src="../assets/heima.png" alt srcset />
+      <div class="logo">
+        <img src="../assets/logo.png" alt srcset />
         <span :to="{ path: '/' }">电商后台管理</span>
       </div>
       <el-button type="danger" size="small" @click="logout">注销</el-button>
@@ -112,6 +112,14 @@ export default {
 <style lang="less" scoped>
 .home_container {
   height: 100%;
+}
+
+.logo {
+  padding-left: 10px;
+  img {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .el-header {
